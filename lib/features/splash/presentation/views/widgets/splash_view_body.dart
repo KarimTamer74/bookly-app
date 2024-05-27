@@ -41,6 +41,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           height: 70.sp,
         ),
         Image.asset(AssetsData.logo),
+        SizedBox(height: MediaQuery.of(context).size.height / 80),
         SlideAnimationText(slideAnimation: slideAnimation)
       ],
     );
