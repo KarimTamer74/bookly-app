@@ -8,18 +8,20 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Image.asset(
-          AssetsData.logo,
-          width: 75.sp,
-          height: 16.1.sp,
-        ),
-        IconButton(
-            onPressed: () {},
-            icon: const Icon(FontAwesomeIcons.magnifyingGlass))
-      ],
+    return SliverToBoxAdapter(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Image.asset(
+            AssetsData.logo,
+            width: 75.sp,
+            height: 16.1.sp,
+          ),
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(FontAwesomeIcons.magnifyingGlass))
+        ],
+      ),
     );
   }
 }

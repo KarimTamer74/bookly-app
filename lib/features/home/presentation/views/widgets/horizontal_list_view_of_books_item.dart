@@ -8,18 +8,20 @@ class HorizontalListViewOfBooksItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .28,
-      child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          itemCount: AssetsData.booksList.length,
-          itemBuilder: (context, index) {
-            return CustomBookImage(
-              index: index,
-              aspectRatio: 2.8 / 4,
-            );
-          }),
+    return SliverToBoxAdapter(
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * .28,
+        child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            itemCount: AssetsData.booksList.length,
+            itemBuilder: (context, index) {
+              return CustomBookImage(
+                index: index,
+                aspectRatio: 2.8 / 4,
+              );
+            }),
+      ),
     );
   }
 }
