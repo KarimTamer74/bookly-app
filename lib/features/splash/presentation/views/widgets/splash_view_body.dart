@@ -30,6 +30,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
