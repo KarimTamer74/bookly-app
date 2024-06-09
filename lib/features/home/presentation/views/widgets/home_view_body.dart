@@ -18,7 +18,7 @@ class HomeViewBody extends StatelessWidget {
           SliverToBoxAdapter(
             child: SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           ),
-          const HorizontalListViewOfBooksItem(),
+          const SliverToBoxAdapter(child: HorizontalListViewOfBooksItem(height: .28,)),
           const SliverToBoxAdapter(child: SizedBox(height: 49)),
           SliverToBoxAdapter(
             child: Text('Best Seller',

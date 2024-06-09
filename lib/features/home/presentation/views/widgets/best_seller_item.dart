@@ -16,7 +16,11 @@ class BestSellerItem extends StatelessWidget {
         height: 120,
         child: Row(
           children: [
-            CustomBookImage(index: index, aspectRatio: 2.8 / 3.5),
+            GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, 'BookDetails');
+                },
+                child: CustomBookImage(index: index, aspectRatio: 2.8 / 3.5)),
             const SizedBox(
               width: 30,
             ),
