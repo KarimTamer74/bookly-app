@@ -11,6 +11,7 @@ class BookDetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cartIcon;
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 15),
       child: Column(
