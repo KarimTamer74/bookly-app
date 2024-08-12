@@ -10,8 +10,7 @@ class BookDetailsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: ListView(
         children: [
           const BooksDetailsSection(),
           Expanded(

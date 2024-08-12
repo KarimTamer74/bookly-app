@@ -5,8 +5,8 @@ import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key, required this.index});
+class BookItem extends StatelessWidget {
+  const BookItem({super.key, required this.index});
   final int index;
   @override
   Widget build(BuildContext context) {

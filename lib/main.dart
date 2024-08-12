@@ -1,5 +1,6 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/features/home/presentation/views/book_details.dart';
+import 'package:bookly_app/features/search/presentation/views/search_view.dart';
 import 'package:bookly_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +23,10 @@ class BooklyApp extends StatelessWidget {
         child: GetMaterialApp(
           home: const SplashView(),
           debugShowCheckedModeBanner: false,
-          routes: {'BookDetails': (p0) => BookDetails()},
+          routes: {
+            'BookDetails': (p0) => const BookDetails(),
+            'searchView': (p0) => const SearchView()
+          },
           theme: ThemeData.dark().copyWith(
               scaffoldBackgroundColor: kPrimaryColor,
               textTheme:

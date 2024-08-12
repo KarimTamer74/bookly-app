@@ -14,7 +14,7 @@ class BooksDetailsSection extends StatelessWidget {
         const CustomBooksDetailsAppBar(),
         SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         const SizedBox(
-            height: 230, child: CustomBookImage(index: 0, aspectRatio: 2 / 3)),
+            height: 230, child: CustomBookImage(index: 0, aspectRatio: 2 / 3),),
         SizedBox(height: MediaQuery.of(context).size.height * 0.04),
         const Text(
           'The Jungle Book',
