@@ -6,6 +6,9 @@ class BookItem extends StatelessWidget {
   final int index;
   @override
   Widget build(BuildContext context) {
-    return CustomBookImage(index: index, aspectRatio: 2.8 / 4,);
+    return CustomBookImage(
+      index: index,
+      aspectRatio: 2.8 / 4,
+    );
   }
 }

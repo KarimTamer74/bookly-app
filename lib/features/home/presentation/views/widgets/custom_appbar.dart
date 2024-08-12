@@ -19,7 +19,7 @@ class CustomHomeAppBar extends StatelessWidget {
           ),
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context,'searchView');
+                Navigator.pushNamed(context, 'searchView');
               },
               icon: const Icon(FontAwesomeIcons.magnifyingGlass))
         ],

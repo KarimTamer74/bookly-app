@@ -20,7 +20,7 @@ class SearchViewBody extends StatelessWidget {
               height: MediaQuery.of(context).size.height * .08,
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
               child: Text(
             'Search Results',
             style: Styles.textStyle18,
