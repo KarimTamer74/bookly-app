@@ -1,6 +1,7 @@
-import 'package:bookly_app/constants.dart';
-import 'package:bookly_app/features/home/data/models/book/books_response.dart';
+import 'package:bookly_app/features/home/data/models/book/book_response.dart';
 import 'package:dio/dio.dart';
+
+import '../../../../constants.dart';
 import 'package:retrofit/http.dart';
 part 'api_services.g.dart';
 
@@ -8,5 +9,8 @@ part 'api_services.g.dart';
 abstract class ApiServices {
   factory ApiServices(Dio dio, {String baseUrl}) = _ApiServices;
   @GET('volumes?q=programming')
-  Future<BooksResponse> getBooks();
+  Future<BookResponse> getBooks();
+  @GET('volumes?Sorting=newest &q=english')
+  
+  Future<BookResponse> fetechNewestBooks();
 }

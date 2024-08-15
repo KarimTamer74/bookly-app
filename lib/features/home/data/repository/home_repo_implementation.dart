@@ -1,10 +1,12 @@
-import 'package:bookly_app/core/errors/failure.dart';
+import 'package:bookly_app/core/errors/server_failure.dart';
 import 'package:bookly_app/features/home/data/api_services/api_services.dart';
 import 'package:bookly_app/features/home/data/models/book/book.dart';
-import 'package:bookly_app/features/home/data/models/book/books_response.dart';
-import 'package:bookly_app/features/home/data/repository/home_repo.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/errors/failure.dart';
+import 'home_repo.dart';
 
 class HomeRepoImplementation implements HomeRepo {
   ApiServices apiServices;
@@ -12,19 +14,46 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failure, List<Book>>> fetchFeaturedBooks() async {
     try {
-      BooksResponse response = await apiServices.getBooks();
-
-      if (response.items == null || response.items!.isEmpty) {
-        debugPrint('No books found.');
-        return left(Failure()); // عودة خطأ إذا لم يكن هناك بيانات
-      }
-
-      debugPrint('Data loaded successfully');
+      var response = await apiServices.getBooks();
+      debugPrint(response.toString());
+      print('data loaded success');
       return right(response.items!);
-    } catch (e) {
+    } // Check the raw response
+
+    catch (e) {
+      // debugPrint('eeeeeeeeeeeeeeeee');
       debugPrint('Error: $e');
-      // debugPrint('Stack trace: $stackTrace');
-      return left(Failure());
+      if (e is DioException) {
+        debugPrint('dio Error: ${ServerFailure.fromDioException(e)}');
+
+        return left(ServerFailure.fromDioException(e));
+      }
+      debugPrint('Error: ${ServerFailure(e.toString())}');
+
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Book>>> fetechNewestBooks() async {
+    try {
+      var response = await apiServices.getBooks();
+      debugPrint(response.toString());
+      print('data loaded success');
+      return right(response.items!);
+    } // Check the raw response
+
+    catch (e) {
+      // debugPrint('eeeeeeeeeeeeeeeee');
+      debugPrint('Error: $e');
+      if (e is DioException) {
+        debugPrint('dio Error: ${ServerFailure.fromDioException(e)}');
+
+        return left(ServerFailure.fromDioException(e));
+      }
+      debugPrint('Error: ${ServerFailure(e.toString())}');
+
+      return left(ServerFailure(e.toString()));
     }
   }
 }

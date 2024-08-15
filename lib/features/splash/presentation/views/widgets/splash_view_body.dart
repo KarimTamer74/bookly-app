@@ -1,6 +1,6 @@
-import 'package:bookly_app/core/utils/assets.dart';
-import 'package:bookly_app/features/home/presentation/views/home_view.dart';
-import 'package:bookly_app/features/splash/presentation/views/widgets/slide_animation_text.dart';
+import '../../../../../core/utils/assets.dart';
+import '../../../../home/presentation/views/home_view.dart';
+import 'slide_animation_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

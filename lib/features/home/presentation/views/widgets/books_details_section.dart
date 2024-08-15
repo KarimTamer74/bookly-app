@@ -1,8 +1,8 @@
-import 'package:bookly_app/core/utils/stayles.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_books_details_appbar.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/stayles.dart';
+import 'book_rating.dart';
+import 'custom_books_details_appbar.dart';
 
 class BooksDetailsSection extends StatelessWidget {
   const BooksDetailsSection({super.key});
@@ -15,7 +15,7 @@ class BooksDetailsSection extends StatelessWidget {
         SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         const SizedBox(
           height: 230,
-          child: CustomBookImage(index: 0, aspectRatio: 2 / 3),
+          child: Text('Books Details'),
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.04),
         const Text(

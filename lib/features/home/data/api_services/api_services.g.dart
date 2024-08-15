@@ -21,13 +21,13 @@ class _ApiServices implements ApiServices {
   String? baseUrl;
 
   @override
-  Future<BooksResponse> getBooks() async {
+  Future<BookResponse> getBooks() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<BooksResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<BookResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -43,7 +43,34 @@ class _ApiServices implements ApiServices {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = BooksResponse.fromJson(_result.data!);
+    final _value = BookResponse.fromJson(_result.data!);
+    return _value;
+  }
+
+  @override
+  Future<BookResponse> fetechNewestBooks() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BookResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'volumes?Sorting=newest &q=english',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = BookResponse.fromJson(_result.data!);
     return _value;
   }
 

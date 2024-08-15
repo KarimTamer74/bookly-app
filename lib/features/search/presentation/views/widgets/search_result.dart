@@ -1,5 +1,5 @@
-import 'package:bookly_app/core/utils/assets.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
+import '../../../../../core/utils/assets.dart';
+import '../../../../home/presentation/views/widgets/book_item.dart';
 import 'package:flutter/material.dart';
 
 class SearchResult extends StatelessWidget {
@@ -13,6 +13,6 @@ class SearchResult extends StatelessWidget {
         return BookItem(index: index);
       }),
     );
-    ;
+    
   }
 }

@@ -1,9 +1,9 @@
-import 'package:bookly_app/constants.dart';
-import 'package:bookly_app/core/utils/stayles.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/book_rating.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../constants.dart';
+import '../../../../../core/utils/stayles.dart';
+import 'book_rating.dart';
 
 class BookItem extends StatelessWidget {
   const BookItem({super.key, required this.index});
@@ -18,9 +18,9 @@ class BookItem extends StatelessWidget {
           children: [
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, 'BookDetails');
+                  Navigator.pushNamed(context, bookDetailsView);
                 },
-                child: CustomBookImage(index: index, aspectRatio: 2.8 / 3.5)),
+                child: const Text('CustomBookImage')),
             const SizedBox(
               width: 30,
             ),

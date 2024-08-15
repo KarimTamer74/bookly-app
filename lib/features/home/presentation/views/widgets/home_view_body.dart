@@ -1,7 +1,7 @@
-import 'package:bookly_app/core/utils/stayles.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/best_seller_list_view.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_appbar.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/horizontal_list_view_of_books_item.dart';
+import '../../../../../core/utils/stayles.dart';
+import 'best_seller_list_view.dart';
+import 'custom_appbar.dart';
+import 'horizontal_list_view_of_books_item.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -19,10 +19,8 @@ class HomeViewBody extends StatelessWidget {
             child: SizedBox(height: MediaQuery.of(context).size.height * 0.05),
           ),
           const SliverToBoxAdapter(
-              child: HorizontalListViewOfBooksItem(
-            height: .28,
-          )),
-          const SliverToBoxAdapter(child: SizedBox(height: 49)),
+              child: FeaturedBooksListView(height: .28),),
+          const SliverToBoxAdapter(child: SizedBox(height: 49),),
           SliverToBoxAdapter(
             child: Text('Best Seller',
                 style:

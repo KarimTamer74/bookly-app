@@ -1,6 +1,6 @@
-import 'package:bookly_app/core/utils/stayles.dart';
-import 'package:bookly_app/features/search/presentation/views/widgets/custom_search_text_field.dart';
-import 'package:bookly_app/features/search/presentation/views/widgets/search_result.dart';
+import '../../../../../core/utils/stayles.dart';
+import 'custom_search_text_field.dart';
+import 'search_result.dart';
 import 'package:flutter/material.dart';
 
 class SearchViewBody extends StatelessWidget {

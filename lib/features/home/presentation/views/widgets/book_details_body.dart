@@ -1,6 +1,6 @@
-import 'package:bookly_app/core/utils/stayles.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/books_details_section.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/horizontal_list_view_of_books_item.dart';
+import '../../../../../core/utils/stayles.dart';
+import 'books_details_section.dart';
+import 'horizontal_list_view_of_books_item.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsBody extends StatelessWidget {
@@ -26,7 +26,7 @@ class BookDetailsBody extends StatelessWidget {
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.025),
           // ignore: prefer_const_constructors
-          HorizontalListViewOfBooksItem(
+          FeaturedBooksListView(
             height: .12,
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.05),
