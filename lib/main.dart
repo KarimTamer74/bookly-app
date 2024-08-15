@@ -1,6 +1,5 @@
 import 'package:bookly_app/constants.dart';
-import 'package:bookly_app/features/home/presentation/views/book_details.dart';
-import 'package:bookly_app/features/search/presentation/views/search_view.dart';
+import 'package:bookly_app/core/utils/route.dart';
 import 'package:bookly_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,12 +7,12 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const BooklyApp());
+  runApp( BooklyApp(appRoute: AppRoute(),));
 }
 
 class BooklyApp extends StatelessWidget {
-  const BooklyApp({super.key});
-
+  const BooklyApp({super.key, required this.appRoute});
+ final AppRoute appRoute;
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -23,10 +22,7 @@ class BooklyApp extends StatelessWidget {
         child: GetMaterialApp(
           home: const SplashView(),
           debugShowCheckedModeBanner: false,
-          routes: {
-            'BookDetails': (p0) => const BookDetails(),
-            'searchView': (p0) => const SearchView()
-          },
+          onGenerateRoute: appRoute.generateRoute,
           theme: ThemeData.dark().copyWith(
               scaffoldBackgroundColor: kPrimaryColor,
               textTheme:
