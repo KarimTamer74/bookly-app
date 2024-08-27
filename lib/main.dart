@@ -1,3 +1,5 @@
+import 'package:bookly_app/core/utils/service_locator.dart';
+
 import 'constants.dart';
 import 'core/utils/route.dart';
 import 'features/splash/presentation/views/splash_view.dart';
@@ -7,6 +9,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+  setupServiceLocator();
   runApp(BooklyApp(
     appRoute: AppRoute(),
   ));
