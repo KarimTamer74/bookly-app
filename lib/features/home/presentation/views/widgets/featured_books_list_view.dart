@@ -11,47 +11,47 @@ class FeaturedBooksListView extends StatefulWidget {
   final double height;
 
   @override
-  State<FeaturedBooksListView> createState() =>
-      _FeaturedBooksListViewState();
+  State<FeaturedBooksListView> createState() => _FeaturedBooksListViewState();
 }
 
-class _FeaturedBooksListViewState
-    extends State<FeaturedBooksListView> {
+class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
   List<Book> books = [];
+
   @override
   void initState() {
     super.initState();
-
     BlocProvider.of<FeaturedBooksCubit>(context).fetchFeaturedBooks();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * widget.height,
-      child: BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
-        builder: (context, state) {
-          if (state is FeaturedBooksSuccess) {
-            books = state.books;
-            return ListView.builder(
+    return BlocBuilder<FeaturedBooksCubit, FeaturedBooksState>(
+      builder: (context, state) {
+        if (state is FeaturedBooksSuccess) {
+          books = state.books;
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * widget.height,
+            child: ListView.builder(
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: AssetsData.booksList.length,
               itemBuilder: (context, index) {
-                return CustomBookImage(
-                  index: index,
-                  aspectRatio: 2.8 / 4,
-                  book: books[index],
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomBookImage(
+                    aspectRatio: 2.7 / 4,
+                    book: books[index],
+                  ),
                 );
               },
-            );
-          } else if (state is FeaturedBooksFailure) {
-            return Text(state.errorMessage);
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
-      ),
+            ),
+          );
+        } else if (state is FeaturedBooksFailure) {
+          return Center(child: Text(state.errorMessage));
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 }

@@ -1,3 +1,7 @@
+import 'package:bookly_app/features/home/data/models/book/book.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_sized_box.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/preview_section.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/stayles.dart';
@@ -5,68 +9,34 @@ import 'book_rating.dart';
 import 'custom_books_details_appbar.dart';
 
 class BooksDetailsSection extends StatelessWidget {
-  const BooksDetailsSection({super.key});
-
+  const BooksDetailsSection({super.key, required this.book});
+  final Book book;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         const CustomBooksDetailsAppBar(),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-        const SizedBox(
+        const CustomSizedBox(precentage: 0.05),
+        SizedBox(
           height: 230,
-          child: Text('Books Details'),
+          child: CustomBookImage(aspectRatio: 1, book: book),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-        const Text(
-          'The Jungle Book',
-          style: TextStyle(fontSize: 30, fontFamily: 'GT Sectra Fine Regular'),
+        const CustomSizedBox(precentage: 0.05),
+        Text(
+          book.volumeInfo!.title!,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+              fontSize: 30, fontFamily: 'GT Sectra Fine Regular'),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
-        Text('Rudyard Kipling',
+        const CustomSizedBox(precentage: 0.02),
+        Text(book.volumeInfo!.authors![0],
             style: Styles.textStyle18.copyWith(color: const Color(0xff707070))),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+        const CustomSizedBox(precentage: 0.02),
         const BookRating(),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-        GestureDetector(
-          onTap: () {},
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 150,
-                height: 48,
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        bottomLeft: Radius.circular(15))),
-                child: Center(
-                  child: Text(
-                    '19.99€',
-                    style: Styles.textStyle18.copyWith(
-                        fontWeight: FontWeight.bold, color: Colors.black),
-                  ),
-                ),
-              ),
-              Container(
-                width: 150,
-                height: 48,
-                decoration: const BoxDecoration(
-                    color: Color(0xffEF8262),
-                    borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(15),
-                        bottomRight: Radius.circular(15))),
-                child: Center(
-                  child: Text(
-                    'Free preview',
-                    style:
-                        Styles.textStyle16.copyWith(fontFamily: 'Gilroy-Bold'),
-                  ),
-                ),
-              ),
-            ],
-          ),
+        const CustomSizedBox(precentage: 0.03),
+        PreviewSection(
+          book: book,
         )
       ],
     );

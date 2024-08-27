@@ -8,9 +8,8 @@ part 'api_services.g.dart';
 @RestApi(baseUrl: baseUrl)
 abstract class ApiServices {
   factory ApiServices(Dio dio, {String baseUrl}) = _ApiServices;
-  @GET('volumes?q=programming')
+  @GET('volumes?q=english')
   Future<BookResponse> getBooks();
-  @GET('volumes?Sorting=newest &q=english')
-  
+  @GET('volumes?Sorting=newest&q=programming')
   Future<BookResponse> fetechNewestBooks();
 }

@@ -1,7 +1,9 @@
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_sized_box.dart';
+
 import '../../../../../core/utils/stayles.dart';
-import 'best_seller_list_view.dart';
+import 'newest_books_list_view.dart';
 import 'custom_appbar.dart';
-import 'horizontal_list_view_of_books_item.dart';
+import 'featured_books_list_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -15,19 +17,24 @@ class HomeViewBody extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         slivers: [
           const CustomHomeAppBar(),
-          SliverToBoxAdapter(
-            child: SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+          const SliverToBoxAdapter(
+            child: CustomSizedBox(precentage: .02),
           ),
           const SliverToBoxAdapter(
-              child: FeaturedBooksListView(height: .28),),
-          const SliverToBoxAdapter(child: SizedBox(height: 49),),
+            child: FeaturedBooksListView(height: .28),
+          ),
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 35),
+          ),
           SliverToBoxAdapter(
-            child: Text('Best Seller',
+            child: Text('Newest books',
                 style:
                     Styles.textStyle18.copyWith(fontWeight: FontWeight.w600)),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 20)),
-          const BestSellerListView()
+          const SliverFillRemaining(
+            child: NewestBooksListView(),
+          ),
         ],
       ),
     );

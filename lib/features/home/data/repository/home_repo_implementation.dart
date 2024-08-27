@@ -16,19 +16,14 @@ class HomeRepoImplementation implements HomeRepo {
     try {
       var response = await apiServices.getBooks();
       debugPrint(response.toString());
-      print('data loaded success');
       return right(response.items!);
     } // Check the raw response
 
     catch (e) {
-      // debugPrint('eeeeeeeeeeeeeeeee');
-      debugPrint('Error: $e');
       if (e is DioException) {
-        debugPrint('dio Error: ${ServerFailure.fromDioException(e)}');
 
         return left(ServerFailure.fromDioException(e));
       }
-      debugPrint('Error: ${ServerFailure(e.toString())}');
 
       return left(ServerFailure(e.toString()));
     }
@@ -38,20 +33,13 @@ class HomeRepoImplementation implements HomeRepo {
   Future<Either<Failure, List<Book>>> fetechNewestBooks() async {
     try {
       var response = await apiServices.getBooks();
-      debugPrint(response.toString());
-      print('data loaded success');
       return right(response.items!);
     } // Check the raw response
 
     catch (e) {
-      // debugPrint('eeeeeeeeeeeeeeeee');
-      debugPrint('Error: $e');
       if (e is DioException) {
-        debugPrint('dio Error: ${ServerFailure.fromDioException(e)}');
-
         return left(ServerFailure.fromDioException(e));
       }
-      debugPrint('Error: ${ServerFailure(e.toString())}');
 
       return left(ServerFailure(e.toString()));
     }

@@ -1,6 +1,6 @@
-import '../../../../../core/utils/assets.dart';
-import '../../../../home/presentation/views/widgets/book_item.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/assets.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({super.key});
@@ -10,9 +10,9 @@ class SearchResult extends StatelessWidget {
     return SliverList(
       delegate: SliverChildBuilderDelegate(
           childCount: AssetsData.booksList.length, (context, index) {
-        return BookItem(index: index);
+        return const Text('');
+        // BookItem()
       }),
     );
-    
   }
 }

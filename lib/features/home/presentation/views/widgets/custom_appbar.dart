@@ -1,3 +1,5 @@
+import 'package:bookly_app/constants.dart';
+
 import '../../../../../core/utils/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +21,7 @@ class CustomHomeAppBar extends StatelessWidget {
           ),
           IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, 'searchView');
+                Navigator.pushNamed(context, searchView);
               },
               icon: const Icon(FontAwesomeIcons.magnifyingGlass))
         ],

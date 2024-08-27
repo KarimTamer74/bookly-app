@@ -1,3 +1,5 @@
+import 'package:bookly_app/features/home/data/models/book/book.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -6,8 +8,11 @@ import '../../../../../core/utils/stayles.dart';
 import 'book_rating.dart';
 
 class BookItem extends StatelessWidget {
-  const BookItem({super.key, required this.index});
-  final int index;
+  const BookItem({
+    super.key,
+    required this.book,
+  });
+  final Book book;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,9 +23,13 @@ class BookItem extends StatelessWidget {
           children: [
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, bookDetailsView);
+                  Navigator.pushNamed(context, bookDetailsView,
+                      arguments: book);
                 },
-                child: const Text('CustomBookImage')),
+                child: CustomBookImage(
+                  aspectRatio: 2.8 / 4,
+                  book: book,
+                )),
             const SizedBox(
               width: 30,
             ),
@@ -31,7 +40,7 @@ class BookItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .48,
                     child: Text(
-                      'Harry Potter and the Goblet of Fire',
+                      book.volumeInfo!.title!.toString(),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle20
@@ -42,7 +51,7 @@ class BookItem extends StatelessWidget {
                     height: 3.sp,
                   ),
                   Text(
-                    'J.K. Rowling',
+                    book.volumeInfo!.authors![0].toString(),
                     style: Styles.textStyle14.copyWith(
                         fontWeight: FontWeight.w500,
                         color: Colors.white.withOpacity(.7)),
@@ -54,7 +63,7 @@ class BookItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '19.99 €',
+                        'Free',
                         style: Styles.textStyle20
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
