@@ -1,5 +1,8 @@
-import 'package:bookly_app/features/home/data/models/book/book.dart';
-import 'package:bookly_app/features/home/data/repository/home_repo.dart';
+import '../../../../../../core/errors/failure.dart';
+import 'package:dartz/dartz.dart';
+
+import '../../../../data/models/book/book.dart';
+import '../../../../data/repository/home_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,7 +12,7 @@ class FeaturedNewestBooksCubit extends Cubit<FeaturedNewestBooksState> {
   FeaturedNewestBooksCubit(this.homeRepo) : super(FeaturedNewestBooksInitial());
   final HomeRepo homeRepo;
   void fetchNewsetBooks() async {
-    var result = await homeRepo.fetechNewestBooks();
+    Either<Failure, List<Book>> result = await homeRepo.fetechNewestBooks();
     result.fold(
       (failure) {
         emit(FeaturedNewestBooksFailure(failure.errorMessage));

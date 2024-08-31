@@ -1,9 +1,9 @@
-import 'package:bookly_app/features/home/data/models/book/book.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_sized_box.dart';
+import '../../../data/models/book/book.dart';
+import 'custom_sized_box.dart';
+import 'featured_books_section.dart';
 
 import '../../../../../core/utils/stayles.dart';
 import 'books_details_section.dart';
-import 'featured_books_list_view.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsBody extends StatelessWidget {
@@ -28,7 +28,7 @@ class BookDetailsBody extends StatelessWidget {
           ),
           const CustomSizedBox(
               precentage: 0.025), // ignore: prefer_const_constructors
-          const FeaturedBooksListView(
+          const FeaturedBooksSection(
             height: .12,
           ),
           const CustomSizedBox(precentage: 0.05),

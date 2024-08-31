@@ -1,5 +1,5 @@
-import 'package:bookly_app/features/home/data/models/book/book.dart';
-import 'package:bookly_app/features/search/presentation/views/search_view.dart';
+import '../../features/home/data/models/book/book.dart';
+import '../../features/search/presentation/views/search_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants.dart';
@@ -11,7 +11,9 @@ class AppRoute {
   Route? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case splashView:
-        return MaterialPageRoute(builder: (_) => const SplashView());
+        return MaterialPageRoute(
+          builder: (_) => const SplashView(),
+        );
       case homeView:
         return MaterialPageRoute(
           builder: (_) => const HomeView(),
@@ -19,9 +21,12 @@ class AppRoute {
       case bookDetailsView:
         Book book = settings.arguments as Book;
         return MaterialPageRoute(
-            builder: (_) =>  BookDetailsView(book: book));
+          builder: (_) => BookDetailsView(book: book),
+        );
       case searchView:
-        return MaterialPageRoute(builder: (_) => const SearchView());
+        return MaterialPageRoute(
+          builder: (_) => const SearchView(),
+        );
     }
 
     return null;

@@ -1,10 +1,19 @@
-import '../../../../../core/utils/stayles.dart';
+import '../../../../home/presentation/views/widgets/custom_sized_box.dart';
 import 'custom_search_text_field.dart';
-import 'search_result.dart';
 import 'package:flutter/material.dart';
 
-class SearchViewBody extends StatelessWidget {
+import '../../../../../core/utils/stayles.dart';
+import 'search_result.dart';
+
+class SearchViewBody extends StatefulWidget {
   const SearchViewBody({super.key});
+
+  @override
+  State<SearchViewBody> createState() => _SearchViewBodyState();
+}
+
+class _SearchViewBodyState extends State<SearchViewBody> {
+  String searchText = '';
 
   @override
   Widget build(BuildContext context) {
@@ -12,25 +21,33 @@ class SearchViewBody extends StatelessWidget {
       padding: EdgeInsets.all(MediaQuery.of(context).size.height * .03),
       child: CustomScrollView(
         slivers: [
-          const SliverToBoxAdapter(
-            child: CustomSearchTextField(),
-          ),
           SliverToBoxAdapter(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * .08,
+            child: CustomSearchTextField(
+              onTextChanged: (value) {
+                setState(
+                  () {
+                    searchText = value; // تحديث النص المدخل
+                  },
+                );
+              },
             ),
+          ),
+          const SliverToBoxAdapter(
+            child: CustomSizedBox(precentage: .08),
           ),
           const SliverToBoxAdapter(
               child: Text(
             'Search Results',
             style: Styles.textStyle18,
           )),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * .08,
-            ),
+          const SliverToBoxAdapter(
+            child: CustomSizedBox(precentage: .08),
           ),
-          const SearchResult()
+          SliverFillRemaining(
+            child: SearchResult(
+              searchedBook: searchText,
+            ),
+          )
         ],
       ),
     );

@@ -1,9 +1,8 @@
-import 'package:bookly_app/features/home/data/models/book/book.dart';
-import 'package:bookly_app/features/home/presentation/view_models/cubits/featured_newest_books/featured_newest_books_cubit.dart';
+import '../../../data/models/book/book.dart';
+import '../../view_models/cubits/featured_newest_books/featured_newest_books_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'book_item.dart';
 import 'package:flutter/material.dart';
+import 'book_item.dart';
 
 class NewestBooksListView extends StatefulWidget {
   const NewestBooksListView({super.key});
@@ -13,22 +12,34 @@ class NewestBooksListView extends StatefulWidget {
 }
 
 class _NewestBooksListViewState extends State<NewestBooksListView> {
+  final ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
     BlocProvider.of<FeaturedNewestBooksCubit>(context).fetchNewsetBooks();
   }
 
-  Book? book;
-  List<Book> newestBooks = [];
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FeaturedNewestBooksCubit, FeaturedNewestBooksState>(
       builder: (context, state) {
         if (state is FeaturedNewestBooksSuccess) {
-          newestBooks = state.newestBooks;
+          final List<Book> newestBooks = state.newestBooks;
+          WidgetsBinding.instance.addPostFrameCallback(
+            (_) {
+              _scrollToEnd();
+            },
+          );
           return ListView.builder(
             reverse: true,
+            controller: _scrollController,
             padding: EdgeInsets.zero,
             physics: const BouncingScrollPhysics(),
             itemCount: newestBooks.length,
@@ -49,5 +60,11 @@ class _NewestBooksListViewState extends State<NewestBooksListView> {
         }
       },
     );
+  }
+
+  void _scrollToEnd() {
+    if (_scrollController.hasClients) {
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+    }
   }
 }

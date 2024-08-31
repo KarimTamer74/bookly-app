@@ -1,6 +1,6 @@
-import 'package:bookly_app/core/errors/server_failure.dart';
-import 'package:bookly_app/features/home/data/api_services/api_services.dart';
-import 'package:bookly_app/features/home/data/models/book/book.dart';
+import '../../../../core/errors/server_failure.dart';
+import '../api_services/api_services.dart';
+import '../models/book/book.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

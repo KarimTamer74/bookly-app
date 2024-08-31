@@ -1,4 +1,4 @@
-import 'package:bookly_app/features/home/data/models/book/book.dart';
+import 'book.dart';
 
 class BookResponse {
   final List<Book>? items;

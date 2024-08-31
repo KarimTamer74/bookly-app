@@ -1,4 +1,4 @@
-import 'package:bookly_app/core/errors/failure.dart';
+import 'failure.dart';
 import 'package:dio/dio.dart';
 
 class ServerFailure extends Failure {

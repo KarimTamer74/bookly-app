@@ -7,14 +7,17 @@ class SlideAnimationText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: slideAnimation,
-        builder: (context, _) {
-          return SlideTransition(
-            position: slideAnimation,
-            child: Text('Read more, discover more',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.padyakkeExpandedOne()),
-          );
-        });
+      animation: slideAnimation,
+      builder: (context, _) {
+        return SlideTransition(
+          position: slideAnimation,
+          child: Text(
+            'Read more, discover more',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.padyakkeExpandedOne(),
+          ),
+        );
+      },
+    );
   }
 }

@@ -1,9 +1,9 @@
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_sized_box.dart';
+import 'custom_sized_box.dart';
 
 import '../../../../../core/utils/stayles.dart';
 import 'newest_books_list_view.dart';
-import 'custom_appbar.dart';
-import 'featured_books_list_view.dart';
+import 'custom_home_appbar.dart';
+import 'featured_books_section.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -21,7 +21,7 @@ class HomeViewBody extends StatelessWidget {
             child: CustomSizedBox(precentage: .02),
           ),
           const SliverToBoxAdapter(
-            child: FeaturedBooksListView(height: .28),
+            child: FeaturedBooksSection(height: .28),
           ),
           const SliverToBoxAdapter(
             child: SizedBox(height: 35),

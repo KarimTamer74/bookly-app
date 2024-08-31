@@ -1,5 +1,5 @@
-import 'package:bookly_app/features/home/data/models/book/book.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
+import '../../../data/models/book/book.dart';
+import 'custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,14 +22,14 @@ class BookItem extends StatelessWidget {
         child: Row(
           children: [
             GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, bookDetailsView,
-                      arguments: book);
-                },
-                child: CustomBookImage(
-                  aspectRatio: 2.8 / 4,
-                  book: book,
-                )),
+              onTap: () {
+                Navigator.pushNamed(context, bookDetailsView, arguments: book);
+              },
+              child: CustomBookImage(
+                aspectRatio: 2.8 / 4,
+                book: book,
+              ),
+            ),
             const SizedBox(
               width: 30,
             ),
@@ -52,6 +52,8 @@ class BookItem extends StatelessWidget {
                   ),
                   Text(
                     book.volumeInfo!.authors![0].toString(),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle14.copyWith(
                         fontWeight: FontWeight.w500,
                         color: Colors.white.withOpacity(.7)),
@@ -67,7 +69,7 @@ class BookItem extends StatelessWidget {
                         style: Styles.textStyle20
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
-                      const BookRating(),
+                      BookRating(book: book),
                     ],
                   )
                 ],

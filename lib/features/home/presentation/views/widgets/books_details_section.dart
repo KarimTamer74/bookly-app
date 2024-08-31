@@ -1,7 +1,7 @@
-import 'package:bookly_app/features/home/data/models/book/book.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_sized_box.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/preview_section.dart';
+import '../../../data/models/book/book.dart';
+import 'custom_book_image.dart';
+import 'custom_sized_box.dart';
+import 'preview_section.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/stayles.dart';
@@ -33,7 +33,7 @@ class BooksDetailsSection extends StatelessWidget {
         Text(book.volumeInfo!.authors![0],
             style: Styles.textStyle18.copyWith(color: const Color(0xff707070))),
         const CustomSizedBox(precentage: 0.02),
-        const BookRating(),
+         BookRating(book: book,),
         const CustomSizedBox(precentage: 0.03),
         PreviewSection(
           book: book,

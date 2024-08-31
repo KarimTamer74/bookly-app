@@ -1,9 +1,9 @@
-import 'package:bookly_app/constants.dart';
-
-import '../../../../../core/utils/assets.dart';
+import '../../../../../constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../../../../core/utils/assets.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({super.key});
@@ -23,6 +23,7 @@ class CustomHomeAppBar extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, searchView);
               },
+              tooltip: 'Search',
               icon: const Icon(FontAwesomeIcons.magnifyingGlass))
         ],
       ),

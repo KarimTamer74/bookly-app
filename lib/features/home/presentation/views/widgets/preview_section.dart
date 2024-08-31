@@ -1,5 +1,5 @@
-import 'package:bookly_app/core/utils/stayles.dart';
-import 'package:bookly_app/features/home/data/models/book/book.dart';
+import '../../../../../core/utils/stayles.dart';
+import '../../../data/models/book/book.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
