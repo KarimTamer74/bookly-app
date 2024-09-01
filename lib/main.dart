@@ -1,4 +1,4 @@
-import 'package:bookly_app/features/home/presentation/view_models/cubits/newest_books_cubit/newest_books_cubit.dart';
+import 'features/home/presentation/view_models/cubits/newest_books_cubit/newest_books_cubit.dart';
 
 import 'core/utils/service_locator.dart';
 import 'features/home/data/repository/home_repo_implementation.dart';

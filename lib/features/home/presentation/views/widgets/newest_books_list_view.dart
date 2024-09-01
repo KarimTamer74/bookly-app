@@ -1,4 +1,4 @@
-import 'package:bookly_app/features/home/presentation/view_models/cubits/newest_books_cubit/newest_books_cubit.dart';
+import '../../view_models/cubits/newest_books_cubit/newest_books_cubit.dart';
 
 import '../../../data/models/book/book.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -1,7 +1,6 @@
-import 'package:bookly_app/features/home/data/models/book/book.dart';
-import 'package:bookly_app/features/home/presentation/view_models/cubits/similar_books_cubit/similar_books_cubit.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/featured_books_loaded.dart';
+import '../../../../../constants.dart';
+import '../../view_models/cubits/similar_books_cubit/similar_books_cubit.dart';
+import 'custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,8 +32,12 @@ class _GetSimilarBooksState extends State<GetSimilarBooks> {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 7, top: 5),
-                  child: CustomBookImage(
-                      aspectRatio: 2 / 3, book: state.similarBooks[index]),
+                  child: GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, bookDetailsView,
+                        arguments: state.similarBooks[index]),
+                    child: CustomBookImage(
+                        aspectRatio: 2 / 3, book: state.similarBooks[index]),
+                  ),
                 );
               },
             ),

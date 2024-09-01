@@ -20,6 +20,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
     return Padding(
       padding: EdgeInsets.all(MediaQuery.of(context).size.height * .03),
       child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverToBoxAdapter(
             child: CustomSearchTextField(

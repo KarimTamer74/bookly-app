@@ -22,20 +22,22 @@ class _SearchResultState extends State<SearchResult> {
     if (oldWidget.searchedBook != widget.searchedBook) {
       _updateSearchResults(widget.searchedBook);
     }
+    if (widget.searchedBook.isEmpty) {
+      searchResult = [];
+    }
   }
 
   void _updateSearchResults(String searched) {
-    final List<Book> allBooks = BlocProvider.of<FeaturedBooksCubit>(context).getBooks;
-
-    final List<Book> filteredBooks = allBooks
-        .where((element) => element.volumeInfo?.title?.toLowerCase().startsWith(searched.toLowerCase()) ?? false)
+    final List<Book> allBooks =
+        BlocProvider.of<FeaturedBooksCubit>(context).getBooks;
+    searchResult = allBooks
+        .where((element) =>
+            element.volumeInfo?.title
+                ?.toLowerCase()
+                .startsWith(searched.toLowerCase()) ??
+            false)
         .toList();
 
-    if (filteredBooks != searchResult) {
-      setState(() {
-        searchResult = filteredBooks;
-      });
-    }
   }
 
   @override

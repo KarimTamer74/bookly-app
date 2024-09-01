@@ -1,16 +1,10 @@
-import 'package:bookly_app/core/utils/service_locator.dart';
-import 'package:bookly_app/features/home/data/repository/home_repo_implementation.dart';
-import 'package:bookly_app/features/home/presentation/view_models/cubits/similar_books_cubit/similar_books_cubit.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/get_similar_books.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../data/models/book/book.dart';
-import 'custom_sized_box.dart';
-import 'featured_books_section.dart';
+import 'get_similar_books.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/stayles.dart';
+import '../../../data/models/book/book.dart';
 import 'books_details_section.dart';
-import 'package:flutter/material.dart';
+import 'custom_sized_box.dart';
 
 class BookDetailsBody extends StatelessWidget {
   const BookDetailsBody({super.key, required this.book});
