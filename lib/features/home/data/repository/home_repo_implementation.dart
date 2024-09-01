@@ -14,14 +14,12 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failure, List<Book>>> fetchFeaturedBooks() async {
     try {
-      var response = await apiServices.getBooks();
-      debugPrint(response.toString());
+      var response = await apiServices.fetechFeaturedBooks();
       return right(response.items!);
     } // Check the raw response
 
     catch (e) {
       if (e is DioException) {
-
         return left(ServerFailure.fromDioException(e));
       }
 
@@ -32,7 +30,23 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failure, List<Book>>> fetechNewestBooks() async {
     try {
-      var response = await apiServices.getBooks();
+      var response = await apiServices.fetechNewestBooks();
+      return right(response.items!);
+    } // Check the raw response
+
+    catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioException(e));
+      }
+
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Book>>> fetechSimilarBooks() async {
+    try {
+      var response = await apiServices.fetechSimilarBooks();
       return right(response.items!);
     } // Check the raw response
 

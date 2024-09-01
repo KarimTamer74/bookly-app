@@ -9,7 +9,10 @@ part 'api_services.g.dart';
 abstract class ApiServices {
   factory ApiServices(Dio dio, {String baseUrl}) = _ApiServices;
   @GET('volumes?q=english')
-  Future<BookResponse> getBooks();
+  Future<BookResponse> fetechFeaturedBooks();
   @GET('volumes?q=english&filtering=free')
   Future<BookResponse> fetechNewestBooks();
+  @GET('volumes?q=english&filtering=free&sorting=relevance')
+  Future<BookResponse> fetechSimilarBooks();
+
 }

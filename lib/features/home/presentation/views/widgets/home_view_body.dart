@@ -14,18 +14,12 @@ class HomeViewBody extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, top: 15, bottom: 15),
       child: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         slivers: [
           const CustomHomeAppBar(),
-          const SliverToBoxAdapter(
-            child: CustomSizedBox(precentage: .02),
-          ),
-          const SliverToBoxAdapter(
-            child: FeaturedBooksSection(height: .28),
-          ),
-          const SliverToBoxAdapter(
-            child: SizedBox(height: 35),
-          ),
+          const SliverToBoxAdapter(child: CustomSizedBox(precentage: .02)),
+          const SliverToBoxAdapter(child: FeaturedBooksSection(height: .28)),
+          const SliverToBoxAdapter(child: SizedBox(height: 35)),
           SliverToBoxAdapter(
             child: Text('Newest books',
                 style:

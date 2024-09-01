@@ -1,7 +1,8 @@
+import 'package:bookly_app/features/home/presentation/view_models/cubits/newest_books_cubit/newest_books_cubit.dart';
+
 import 'core/utils/service_locator.dart';
 import 'features/home/data/repository/home_repo_implementation.dart';
 import 'features/home/presentation/view_models/cubits/featured_books_cubit/featured_books_cubit.dart';
-import 'features/home/presentation/view_models/cubits/featured_newest_books/featured_newest_books_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'constants.dart';
 import 'core/utils/route.dart';

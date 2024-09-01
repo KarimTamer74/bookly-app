@@ -1,3 +1,9 @@
+import 'package:bookly_app/core/utils/service_locator.dart';
+import 'package:bookly_app/features/home/data/repository/home_repo_implementation.dart';
+import 'package:bookly_app/features/home/presentation/view_models/cubits/similar_books_cubit/similar_books_cubit.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/get_similar_books.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../data/models/book/book.dart';
 import 'custom_sized_box.dart';
 import 'featured_books_section.dart';
@@ -22,15 +28,13 @@ class BookDetailsBody extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              'You can also like',
+              'Other Category Books',
               style: Styles.textStyle14.copyWith(fontWeight: FontWeight.w600),
             ),
           ),
           const CustomSizedBox(
               precentage: 0.025), // ignore: prefer_const_constructors
-          const FeaturedBooksSection(
-            height: .12,
-          ),
+          const GetSimilarBooks(),
           const CustomSizedBox(precentage: 0.05),
         ],
       ),

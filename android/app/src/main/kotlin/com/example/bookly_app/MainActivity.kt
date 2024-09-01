@@ -3,10 +3,5 @@ package com.example.bookly_app
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity: FlutterActivity() {
-     override fun onCreate(savedInstanceState: Bundle?) {
-        // SplashScreen.show(this) 
-        // or enable full screen
-        SplashScreen.show(this, true)
-        super.onCreate(savedInstanceState)
-    }
+     
 }
