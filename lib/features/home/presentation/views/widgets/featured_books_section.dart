@@ -1,9 +1,10 @@
-import '../../view_models/cubits/featured_books_cubit/featured_books_cubit.dart';
-import 'featured_books_loaded.dart';
+// features/home/presentation/views/widgets/featured_books_section.dart
+import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/models/book/book.dart';
+import '../../view_models/cubits/featured_books_cubit/featured_books_cubit.dart';
+import 'featured_books_loaded.dart';
 
 class FeaturedBooksSection extends StatefulWidget {
   const FeaturedBooksSection({super.key, required this.height});
@@ -14,7 +15,7 @@ class FeaturedBooksSection extends StatefulWidget {
 }
 
 class _FeaturedBooksSectionState extends State<FeaturedBooksSection> {
-  List<Book> books = [];
+  List<BookEntity> books = [];
 
   @override
   void initState() {

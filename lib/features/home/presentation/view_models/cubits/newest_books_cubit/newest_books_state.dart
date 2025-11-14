@@ -1,3 +1,4 @@
+// features/home/presentation/view_models/cubits/newest_books_cubit/newest_books_state.dart
 part of 'newest_books_cubit.dart';
 
 sealed class FeaturedNewestBooksState extends Equatable {
@@ -17,6 +18,6 @@ final class FeaturedNewestBooksFailure extends FeaturedNewestBooksState {
 }
 
 final class FeaturedNewestBooksSuccess extends FeaturedNewestBooksState {
-  final List<Book> newestBooks;
+  final List<BookEntity> newestBooks;
   const FeaturedNewestBooksSuccess(this.newestBooks);
 }

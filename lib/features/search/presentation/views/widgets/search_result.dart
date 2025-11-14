@@ -1,9 +1,11 @@
-import '../../../../../core/utils/stayles.dart';
-import '../../../../home/data/models/book/book.dart';
-import '../../../../home/presentation/view_models/cubits/featured_books_cubit/featured_books_cubit.dart';
-import '../../../../home/presentation/views/widgets/book_item.dart';
+// features/search/presentation/views/widgets/search_result.dart
+import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../../core/utils/stayles.dart';
+import '../../../../home/presentation/view_models/cubits/featured_books_cubit/featured_books_cubit.dart';
+import '../../../../home/presentation/views/widgets/book_item.dart';
 
 class SearchResult extends StatefulWidget {
   const SearchResult({super.key, required this.searchedBook});
@@ -14,7 +16,7 @@ class SearchResult extends StatefulWidget {
 }
 
 class _SearchResultState extends State<SearchResult> {
-  List<Book> searchResult = [];
+  List<BookEntity> searchResult = [];
 
   @override
   void didUpdateWidget(SearchResult oldWidget) {
@@ -28,8 +30,8 @@ class _SearchResultState extends State<SearchResult> {
   }
 
   void _updateSearchResults(String searched) {
-    final List<Book> allBooks =
-        BlocProvider.of<FeaturedBooksCubit>(context).getBooks;
+    final List<BookEntity> allBooks =
+        BlocProvider.of<FeaturedBooksCubit>(context).books;
     searchResult = allBooks
         .where((element) =>
             element.volumeInfo?.title
@@ -37,7 +39,6 @@ class _SearchResultState extends State<SearchResult> {
                 .startsWith(searched.toLowerCase()) ??
             false)
         .toList();
-
   }
 
   @override

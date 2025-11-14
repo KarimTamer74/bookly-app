@@ -1,11 +1,13 @@
-import '../../../../../core/utils/stayles.dart';
-import '../../../data/models/book/book.dart';
+// features/home/presentation/views/widgets/preview_section.dart
+import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../../core/utils/stayles.dart';
+
 class PreviewSection extends StatelessWidget {
   const PreviewSection({super.key, required this.book});
-  final Book book;
+  final BookEntity book;
   @override
   Widget build(BuildContext context) {
     return Row(

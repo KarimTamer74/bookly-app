@@ -1,3 +1,4 @@
+// features/home/presentation/view_models/cubits/featured_books_cubit/featured_books_state.dart
 part of 'featured_books_cubit.dart';
 
 sealed class FeaturedBooksState extends Equatable {
@@ -18,6 +19,6 @@ final class FeaturedBooksFailure extends FeaturedBooksState {
 }
 
 final class FeaturedBooksSuccess extends FeaturedBooksState {
- final List<Book> books;
+ final List<BookEntity> books;
  const FeaturedBooksSuccess({required this.books});
 }

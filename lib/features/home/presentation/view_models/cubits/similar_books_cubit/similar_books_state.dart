@@ -1,3 +1,4 @@
+// features/home/presentation/view_models/cubits/similar_books_cubit/similar_books_state.dart
 part of 'similar_books_cubit.dart';
 
 sealed class FetchSimilarBooksState extends Equatable {
@@ -10,7 +11,7 @@ sealed class FetchSimilarBooksState extends Equatable {
 final class FetchSimilarBooksInitial extends FetchSimilarBooksState {}
 
 final class FetchSimilarBooksSuccessfuly extends FetchSimilarBooksState {
-  final List<Book> similarBooks;
+  final List<BookEntity> similarBooks;
   const FetchSimilarBooksSuccessfuly(this.similarBooks);
 }
 

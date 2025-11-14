@@ -1,8 +1,9 @@
-import '../../view_models/cubits/newest_books_cubit/newest_books_cubit.dart';
-
-import '../../../data/models/book/book.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+// features/home/presentation/views/widgets/newest_books_list_view.dart
+import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../view_models/cubits/newest_books_cubit/newest_books_cubit.dart';
 import 'book_item.dart';
 
 class NewestBooksListView extends StatefulWidget {
@@ -32,7 +33,7 @@ class _NewestBooksListViewState extends State<NewestBooksListView> {
     return BlocBuilder<FeaturedNewestBooksCubit, FeaturedNewestBooksState>(
       builder: (context, state) {
         if (state is FeaturedNewestBooksSuccess) {
-          final List<Book> newestBooks = state.newestBooks;
+          final List<BookEntity> newestBooks = state.newestBooks;
           WidgetsBinding.instance.addPostFrameCallback(
             (_) {
               _scrollToEnd();

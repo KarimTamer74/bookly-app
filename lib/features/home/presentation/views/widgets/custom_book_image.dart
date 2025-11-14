@@ -1,4 +1,5 @@
-import '../../../data/models/book/book.dart';
+// features/home/presentation/views/widgets/custom_book_image.dart
+import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class CustomBookImage extends StatelessWidget {
   });
 
   final double aspectRatio;
-  final Book book;
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {

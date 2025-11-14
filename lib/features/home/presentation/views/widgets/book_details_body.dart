@@ -1,14 +1,15 @@
-import 'get_similar_books.dart';
+// features/home/presentation/views/widgets/book_details_body.dart
+import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/stayles.dart';
-import '../../../data/models/book/book.dart';
 import 'books_details_section.dart';
 import 'custom_sized_box.dart';
+import 'get_similar_books.dart';
 
 class BookDetailsBody extends StatelessWidget {
   const BookDetailsBody({super.key, required this.book});
-  final Book book;
+  final BookEntity book;
   @override
   Widget build(BuildContext context) {
     return Padding(

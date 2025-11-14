@@ -1,20 +1,26 @@
+// features/home/data/repository_impl/home_repo_implementation.dart
+import 'dart:developer';
+
+import 'package:bookly_app/features/home/data/mappers/home_mapper.dart';
+import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../core/errors/failure.dart';
 import '../../../../core/errors/server_failure.dart';
-import '../api_services/api_services.dart';
-import '../models/book/book.dart';
-import 'home_repo.dart';
+import '../../domain/repo/home_repo.dart';
+import '../remote_data_source/api_services.dart';
 
 class HomeRepoImplementation implements HomeRepo {
   ApiServices apiServices;
   HomeRepoImplementation(this.apiServices);
   @override
-  Future<Either<Failure, List<Book>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks() async {
     try {
       var response = await apiServices.fetechFeaturedBooks();
-      return right(response.items!);
+      final List<BookEntity> books =
+          response.items!.map(HomeMapper.toBookEntity).toList();
+      return right(books);
     } // Check the raw response
 
     catch (e) {
@@ -27,10 +33,13 @@ class HomeRepoImplementation implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<Book>>> fetechNewestBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetechNewestBooks() async {
     try {
       var response = await apiServices.fetechNewestBooks();
-      return right(response.items!);
+      final List<BookEntity> books =
+          response.items!.map(HomeMapper.toBookEntity).toList();
+      log(books.toString(), name: 'fetechNewestBooks');
+      return right(books);
     } // Check the raw response
 
     catch (e) {
@@ -43,10 +52,12 @@ class HomeRepoImplementation implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<Book>>> fetechSimilarBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetechSimilarBooks() async {
     try {
       var response = await apiServices.fetechSimilarBooks();
-      return right(response.items!);
+      final List<BookEntity> books =
+          response.items!.map(HomeMapper.toBookEntity).toList();
+      return right(books);
     } // Check the raw response
 
     catch (e) {

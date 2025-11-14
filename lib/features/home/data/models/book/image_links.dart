@@ -1,3 +1,4 @@
+// features/home/data/models/book/image_links.dart
 class ImageLinks {
   String? smallThumbnail;
   String? thumbnail;
