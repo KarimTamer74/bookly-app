@@ -1,3 +1,4 @@
+// features/home/data/remote_data_source/api_services.g.dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'api_services.dart';
@@ -12,7 +13,6 @@ class _ApiServices implements ApiServices {
   _ApiServices(
     this._dio, {
     this.baseUrl,
-    // this.errorLogger,
   }) {
     baseUrl ??= 'https://www.googleapis.com/books/v1/';
   }
@@ -20,8 +20,6 @@ class _ApiServices implements ApiServices {
   final Dio _dio;
 
   String? baseUrl;
-
-  // final ParseErrorLogger? errorLogger;
 
   @override
   Future<BookResponse> fetechFeaturedBooks() async {
@@ -36,7 +34,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'volumes?q=english',
+          'volumes?q=programming',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -50,7 +48,6 @@ class _ApiServices implements ApiServices {
     try {
       _value = BookResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      // errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -83,7 +80,6 @@ class _ApiServices implements ApiServices {
     try {
       _value = BookResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      // errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -102,7 +98,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'volumes?q=programming&filtering=free&sorting=relevance',
+          'volumes?q=english&filtering=free&sorting=relevance',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -116,7 +112,6 @@ class _ApiServices implements ApiServices {
     try {
       _value = BookResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
-      // errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;

@@ -1,4 +1,5 @@
-import '../../../../../constants.dart';
+// features/home/presentation/views/widgets/get_similar_books.dart
+import '../../../../../core/utils/constants.dart';
 import '../../view_models/cubits/similar_books_cubit/similar_books_cubit.dart';
 import 'custom_book_image.dart';
 import 'package:flutter/material.dart';

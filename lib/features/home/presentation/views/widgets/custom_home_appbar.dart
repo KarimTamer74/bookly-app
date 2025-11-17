@@ -1,4 +1,5 @@
-import '../../../../../constants.dart';
+// features/home/presentation/views/widgets/custom_home_appbar.dart
+import '../../../../../core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

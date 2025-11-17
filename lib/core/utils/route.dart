@@ -3,7 +3,7 @@ import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../constants.dart';
+import 'constants.dart';
 import '../../features/home/presentation/view_models/cubits/similar_books_cubit/similar_books_cubit.dart';
 import '../../features/home/presentation/views/book_details.dart';
 import '../../features/home/presentation/views/home_view.dart';

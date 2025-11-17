@@ -31,7 +31,7 @@ class PreviewSection extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () async {
-            final Uri url = Uri.parse(book.volumeInfo!.previewLink!.toString());
+            final Uri url = Uri.parse(book.previewLink!.toString());
             if (await canLaunchUrl(url)) {
               await launchUrl(url, mode: LaunchMode.externalApplication);
             }

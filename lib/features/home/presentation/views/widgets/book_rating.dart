@@ -21,19 +21,14 @@ class BookRating extends StatelessWidget {
         SizedBox(
           width: 1.sp,
         ),
-        Text(
-            book.volumeInfo!.averageRating != null
-                ? '${book.volumeInfo!.averageRating!}'
-                : '4.8',
+        Text(book.averageRating != null ? '${book.averageRating!}' : '4.8',
             style: Styles.textStyle16
                 .copyWith(color: Colors.white.withOpacity(.5))),
         SizedBox(
           width: 3.sp,
         ),
         Text(
-          book.volumeInfo!.averageRating != null
-              ? '(${book.volumeInfo!.ratingsCount!})'
-              : '(3200)',
+          book.averageRating != null ? '(${book.ratingsCount!})' : '(3200)',
           style: Styles.textStyle16.copyWith(
               color: Colors.white.withOpacity(
             .5,

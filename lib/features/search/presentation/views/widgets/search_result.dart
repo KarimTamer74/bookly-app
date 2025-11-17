@@ -34,9 +34,7 @@ class _SearchResultState extends State<SearchResult> {
         BlocProvider.of<FeaturedBooksCubit>(context).books;
     searchResult = allBooks
         .where((element) =>
-            element.volumeInfo?.title
-                ?.toLowerCase()
-                .startsWith(searched.toLowerCase()) ??
+            element.title?.toLowerCase().startsWith(searched.toLowerCase()) ??
             false)
         .toList();
   }

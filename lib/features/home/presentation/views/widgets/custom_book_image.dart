@@ -17,16 +17,20 @@ class CustomBookImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: aspectRatio,
-      child: CachedNetworkImage(
-        fit: BoxFit.fill,
-        imageUrl: book.volumeInfo!.imageLinks!.thumbnail!,
-        placeholder: (context, url) => const Center(
-          child: CircularProgressIndicator(
-            strokeWidth: .5,
+      child: ClipRRect(
+        clipBehavior: Clip.hardEdge,
+        borderRadius: BorderRadiusGeometry.circular(16),
+        child: CachedNetworkImage(
+          fit: BoxFit.fill,
+          imageUrl: book.thumbnail ?? '',
+          placeholder: (context, url) => const Center(
+            child: CircularProgressIndicator(
+              strokeWidth: .5,
+            ),
           ),
-        ),
-        errorWidget: (context, url, error) => const Icon(
-          Icons.error,
+          errorWidget: (context, url, error) => const Icon(
+            Icons.error,
+          ),
         ),
       ),
     );

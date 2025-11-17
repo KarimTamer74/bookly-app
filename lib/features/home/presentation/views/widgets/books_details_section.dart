@@ -24,14 +24,14 @@ class BooksDetailsSection extends StatelessWidget {
         ),
         const CustomSizedBox(precentage: 0.05),
         Text(
-          book.volumeInfo!.title!,
+          book.title!,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(
               fontSize: 30, fontFamily: 'GT Sectra Fine Regular'),
         ),
         const CustomSizedBox(precentage: 0.02),
-        Text(book.volumeInfo!.authors![0],
+        Text(book.authors![0],
             style: Styles.textStyle18.copyWith(color: const Color(0xff707070))),
         const CustomSizedBox(precentage: 0.02),
         BookRating(

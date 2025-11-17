@@ -3,7 +3,7 @@ import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../constants.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/utils/stayles.dart';
 import 'book_rating.dart';
 import 'custom_book_image.dart';
@@ -41,7 +41,7 @@ class BookItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .48,
                     child: Text(
-                      book.volumeInfo!.title!.toString(),
+                      book.title!.toString(),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle20
@@ -52,7 +52,7 @@ class BookItem extends StatelessWidget {
                     height: 3.sp,
                   ),
                   Text(
-                    book.volumeInfo!.authors![0].toString(),
+                    book.authors![0].toString(),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle14.copyWith(
