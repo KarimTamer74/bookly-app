@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animated_text_kit: ^4.2.2
   build_runner: ^2.4.9
   cached_network_image: ^3.3.1
   cupertino_icons: ^1.0.2
@@ -41,14 +42,16 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   get: ^4.6.6
   get_it: ^7.6.7
-  animated_text_kit: ^4.2.2
   google_fonts: ^5.1.0
+  hive: ^2.2.3
+  hive_generator: ^2.0.1
   json_annotation: ^4.9.0
   json_serializable: ^6.8.0
+  path_provider: ^2.1.5
+  pretty_dio_logger: ^1.4.0
   retrofit: ^4.1.0
   retrofit_generator: ^8.1.2
   url_launcher: ^6.2.4
-  pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0

@@ -1,4 +1,5 @@
 // main.dart
+import 'package:bookly_app/core/storage/hive_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,8 +13,10 @@ import 'features/home/presentation/view_models/cubits/featured_books_cubit/featu
 import 'features/home/presentation/view_models/cubits/newest_books_cubit/newest_books_cubit.dart';
 import 'features/splash/presentation/views/splash_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
+  await HiveManager.init();
   runApp(
     BooklyApp(
       appRoute: AppRoute(),

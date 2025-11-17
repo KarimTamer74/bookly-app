@@ -29,8 +29,8 @@ class Book extends BookEntity {
       this.accessInfo,
       this.searchInfo})
       : super(
-            id: bookId,
-            selfLink: bookSelfLink,
+            id: bookId ?? '',
+            selfLink: bookSelfLink ?? '',
             title: volumeInfo?.title ?? 'No title',
             authors: volumeInfo?.authors ?? [],
             publishedDate: volumeInfo?.publishedDate ?? '',
