@@ -17,15 +17,16 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks() async {
     try {
+      //* without mapper
       var response = await apiServices.fetechFeaturedBooks();
       final List<BookEntity> books =
-          response.items!.map(HomeMapper.toBookEntity).toList();
+          response.items!;
       return right(books);
     } // Check the raw response
 
     catch (e) {
       if (e is DioException) {
-        return left(ServerFailure.fromDioException(e));
+        return left(ServerFailure.handleError(e));
       }
 
       return left(ServerFailure(e.toString()));
@@ -35,6 +36,7 @@ class HomeRepoImplementation implements HomeRepo {
   @override
   Future<Either<Failure, List<BookEntity>>> fetechNewestBooks() async {
     try {
+      //* With Mapper
       var response = await apiServices.fetechNewestBooks();
       final List<BookEntity> books =
           response.items!.map(HomeMapper.toBookEntity).toList();
@@ -44,7 +46,7 @@ class HomeRepoImplementation implements HomeRepo {
 
     catch (e) {
       if (e is DioException) {
-        return left(ServerFailure.fromDioException(e));
+        return left(ServerFailure.handleError(e));
       }
 
       return left(ServerFailure(e.toString()));
@@ -62,7 +64,7 @@ class HomeRepoImplementation implements HomeRepo {
 
     catch (e) {
       if (e is DioException) {
-        return left(ServerFailure.fromDioException(e));
+        return left(ServerFailure.handleError(e));
       }
 
       return left(ServerFailure(e.toString()));

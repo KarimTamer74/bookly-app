@@ -1,17 +1,39 @@
 // features/home/domain/entities/book_entity.dart
-import 'package:bookly_app/features/home/domain/entities/volume_info_entity.dart';
 
 class BookEntity {
-  final String? kind;
   final String? id;
-  final String? etag;
   final String? selfLink;
-  final VolumeInfoEntity? volumeInfo;
+  final String? title;
+  final List<String>? authors;
+  final String? publishedDate;
+  final String? description;
+
+  final int? pageCount;
+  final List<String>? categories;
+  final String? maturityRating;
+  final String? smallThumbnail;
+  final String? thumbnail;
+  final String? language;
+  final String? previewLink;
+  final String? infoLink;
+  final num? ratingsCount;
+  final num? averageRating;
 
   BookEntity(
-      {required this.kind,
-      required this.id,
-      required this.etag,
+      {required this.id,
       required this.selfLink,
-      required this.volumeInfo});
+      required this.title,
+      required this.authors,
+      required this.publishedDate,
+      required this.description,
+      required this.pageCount,
+      required this.categories,
+      required this.maturityRating,
+      required this.smallThumbnail,
+      required this.thumbnail,
+      required this.language,
+      required this.previewLink,
+      required this.infoLink,
+      required this.ratingsCount,
+      required this.averageRating});
 }
