@@ -60,7 +60,7 @@ Check out the app demo video:
 ## 📦 Installation
 
 ### Option 1: Download APK
-[![Download APK from Google Drive](https://img.shields.io/badge/Download-Bookly_1.0.0.apk-brightgreen?style=for-the-badge&logo=android)](https://drive.google.com/drive/folders/12lWXLEjITDdCj1uG-GlKcPH2eQIpfRew)
+[![Download APK from Google Drive](https://img.shields.io/badge/Download-Bookly_1.0.0.apk-brightgreen?style=for-the-badge&logo=android)](https://drive.google.com/drive/folders/1I9mlnQTVlxWuVbUY8epKAIVCeha82nb5?usp=drive_link)
 
 ### Option 2: Build from Source
 
