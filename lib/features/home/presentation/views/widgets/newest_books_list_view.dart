@@ -1,5 +1,5 @@
 // features/home/presentation/views/widgets/newest_books_list_view.dart
-import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
+import 'package:bookly_app/features/home/presentation/view_models/cubits/newest_books_cubit/newest_books_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,54 +19,51 @@ class _NewestBooksListViewState extends State<NewestBooksListView> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<FeaturedNewestBooksCubit>(context).fetchNewsetBooks();
-  }
 
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
+    context.read<FeaturedNewestBooksCubit>().fetchNewestBooks();
+
+    _scrollController.addListener(() {
+      final max = _scrollController.position.maxScrollExtent;
+      final current = _scrollController.position.pixels;
+
+      if (current >= max - 200) {
+        context
+            .read<FeaturedNewestBooksCubit>()
+            .fetchNewestBooks(loadMore: true);
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FeaturedNewestBooksCubit, FeaturedNewestBooksState>(
       builder: (context, state) {
-        if (state is FeaturedNewestBooksSuccess) {
-          final List<BookEntity> newestBooks = state.newestBooks;
-          WidgetsBinding.instance.addPostFrameCallback(
-            (_) {
-              _scrollToEnd();
-            },
-          );
-          return ListView.builder(
-            reverse: true,
-            controller: _scrollController,
-            padding: EdgeInsets.zero,
-            physics: const BouncingScrollPhysics(),
-            itemCount: newestBooks.length,
-            itemBuilder: (context, index) {
-              return BookItem(
-                book: newestBooks[index],
-              );
-            },
-          );
-        } else if (state is FeaturedNewestBooksFailure) {
-          return Center(
-            child: Text(state.errorMessage),
-          );
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+        if (state.isLoading && state.books.isEmpty) {
+          return const Center(child: CircularProgressIndicator());
         }
+
+        if (state.errorMessage != null) {
+          return Center(child: Text(state.errorMessage!));
+        }
+
+        return ListView.builder(
+          controller: _scrollController,
+          padding: EdgeInsets.zero,
+          physics: const BouncingScrollPhysics(),
+          itemCount: state.isPaginationLoading
+              ? state.books.length + 1
+              : state.books.length,
+          itemBuilder: (context, index) {
+            if (index == state.books.length) {
+              return const Padding(
+                padding: EdgeInsets.all(16),
+                child: Center(child: CircularProgressIndicator()),
+              );
+            }
+            return BookItem(book: state.books[index]);
+          },
+        );
       },
     );
-  }
-
-  void _scrollToEnd() {
-    if (_scrollController.hasClients) {
-      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-    }
   }
 }

@@ -7,6 +7,6 @@ import '../../../../core/errors/failure.dart';
 abstract class HomeRepo {
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks();
 
-  Future<Either<Failure, List<BookEntity>>> fetechNewestBooks();
+  Future<Either<Failure, List<BookEntity>>> fetechNewestBooks({int pageNum = 0});
   Future<Either<Failure, List<BookEntity>>> fetechSimilarBooks();
 }

@@ -41,14 +41,15 @@ class HomeRepoImplementation implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetechNewestBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetechNewestBooks(
+      {int pageNum = 0}) async {
     try {
-      List<BookEntity> cachedBooks = localDataSource.fetchNewestBooks();
-      if (cachedBooks.isNotEmpty) {
-        return right(cachedBooks);
-      }
+      // List<BookEntity> cachedBooks = localDataSource.fetchNewestBooks();
+      // if (cachedBooks.isNotEmpty) {
+      //   return right(cachedBooks);
+      // }
       //* With Mapper
-      var response = await apiServices.fetechNewestBooks();
+      var response = await apiServices.fetechNewestBooks(pageNum);
       final List<BookEntity> books =
           response.items!.map(HomeMapper.toBookEntity).toList();
       await HiveManager.setBooks(boxName: newestBox, books: books);

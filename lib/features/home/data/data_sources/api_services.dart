@@ -1,4 +1,4 @@
-// features/home/data/remote_data_source/api_services.dart
+// features/home/data/data_sources/api_services.dart
 import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 
@@ -12,8 +12,12 @@ abstract class ApiServices {
   factory ApiServices(Dio dio, {String baseUrl}) = _ApiServices;
   @GET('volumes?q=programming')
   Future<BookResponse> fetechFeaturedBooks();
+
   @GET('volumes?q=english&filtering=free')
-  Future<BookResponse> fetechNewestBooks();
+  Future<BookResponse> fetechNewestBooks(
+    @Query("startIndex") int pageNum,
+  );
+
   @GET('volumes?q=english&filtering=free&sorting=relevance')
   Future<BookResponse> fetechSimilarBooks();
 }

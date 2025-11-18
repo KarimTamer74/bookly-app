@@ -1,4 +1,4 @@
-// features/home/data/remote_data_source/api_services.g.dart
+// features/home/data/data_sources/api_services.g.dart
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'api_services.dart';
@@ -20,7 +20,6 @@ class _ApiServices implements ApiServices {
   final Dio _dio;
 
   String? baseUrl;
-
 
   @override
   Future<BookResponse> fetechFeaturedBooks() async {
@@ -55,9 +54,9 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<BookResponse> fetechNewestBooks() async {
+  Future<BookResponse> fetechNewestBooks(int pageNum) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'startIndex': pageNum * 10};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<BookResponse>(Options(

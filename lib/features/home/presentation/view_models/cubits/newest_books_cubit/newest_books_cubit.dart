@@ -1,27 +1,56 @@
 // features/home/presentation/view_models/cubits/newest_books_cubit/newest_books_cubit.dart
-import 'package:bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:bookly_app/features/home/domain/usecases/fetch_newest_books_usecase.dart';
-import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
+import 'package:bookly_app/features/home/presentation/view_models/cubits/newest_books_cubit/newest_books_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../../../core/errors/failure.dart';
-
-part 'newest_books_state.dart';
 
 class FeaturedNewestBooksCubit extends Cubit<FeaturedNewestBooksState> {
   FeaturedNewestBooksCubit(this.fetchNewestBooksUsecase)
-      : super(FeaturedNewestBooksInitial());
+      : super(const FeaturedNewestBooksState());
+
   final FetchNewestBooksUsecase fetchNewestBooksUsecase;
-  void fetchNewsetBooks() async {
-    Either<Failure, List<BookEntity>> result =
-        await fetchNewestBooksUsecase.call();
+
+  int page = 0;
+  bool isLoadingMore = false;
+
+  Future<void> fetchNewestBooks({bool loadMore = false}) async {
+    if (isLoadingMore) return;
+
+    if (loadMore) {
+      isLoadingMore = true;
+      emit(state.copyWith(isPaginationLoading: true));
+      page++;
+    } else {
+      page = 0;
+      emit(state.copyWith(isLoading: true));
+    }
+
+    final result = await fetchNewestBooksUsecase(pageNum: page);
+
     result.fold(
       (failure) {
-        emit(FeaturedNewestBooksFailure(failure.errorMessage));
+        if (loadMore) {
+          emit(state.copyWith(
+            isPaginationLoading: false,
+            paginationError: failure.errorMessage,
+          ));
+        } else {
+          emit(state.copyWith(
+            isLoading: false,
+            errorMessage: failure.errorMessage,
+          ));
+        }
+        isLoadingMore = false;
       },
-      (newestBooks) {
-        emit(FeaturedNewestBooksSuccess(newestBooks));
+      (newBooks) {
+        final updatedList = loadMore ? [...state.books, ...newBooks] : newBooks;
+
+        emit(state.copyWith(
+          books: updatedList,
+          isLoading: false,
+          isPaginationLoading: false,
+        ));
+
+        isLoadingMore = false;
       },
     );
   }

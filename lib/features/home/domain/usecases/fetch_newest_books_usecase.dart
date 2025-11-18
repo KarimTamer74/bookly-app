@@ -7,7 +7,7 @@ import 'package:dartz/dartz.dart';
 class FetchNewestBooksUsecase {
   final HomeRepo homeRepo;
   FetchNewestBooksUsecase(this.homeRepo);
-  Future<Either<Failure, List<BookEntity>>> call() async {
-    return await homeRepo.fetechNewestBooks();
+  Future<Either<Failure, List<BookEntity>>> call({int pageNum = 0}) async {
+    return await homeRepo.fetechNewestBooks(pageNum: pageNum);
   }
 }

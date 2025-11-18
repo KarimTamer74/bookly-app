@@ -52,7 +52,9 @@ class BookItem extends StatelessWidget {
                     height: 3.sp,
                   ),
                   Text(
-                    book.authors![0].toString(),
+                    (book.authors?.isNotEmpty ?? false)
+                        ? book.authors!.first
+                        : "Unknown author",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle14.copyWith(

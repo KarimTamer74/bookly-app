@@ -11,12 +11,10 @@ class DioFactory {
       ..connectTimeout = const Duration(seconds: 30)
       ..sendTimeout = const Duration(minutes: 1)
       ..receiveTimeout = const Duration(minutes: 1);
-
-    _dio.interceptors.add(PrettyDioLogger());
     _dio.interceptors.add(PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
-      responseBody: true,
+      responseBody: false,
       responseHeader: false,
       error: true,
       compact: true,
