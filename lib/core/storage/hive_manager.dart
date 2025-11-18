@@ -44,7 +44,6 @@ class HiveManager {
     required List<BookEntity> books,
   }) async {
     final box = Hive.box<BookEntity>(boxName);
-    await box.clear(); // Optional but recommended
     await box.addAll(books);
 
     log("Box '$boxName' saved with ${books.length} items");

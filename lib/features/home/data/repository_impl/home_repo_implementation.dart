@@ -44,10 +44,14 @@ class HomeRepoImplementation implements HomeRepo {
   Future<Either<Failure, List<BookEntity>>> fetechNewestBooks(
       {int pageNum = 0}) async {
     try {
-      // List<BookEntity> cachedBooks = localDataSource.fetchNewestBooks();
-      // if (cachedBooks.isNotEmpty) {
-      //   return right(cachedBooks);
-      // }
+      List<BookEntity> cachedBooks = localDataSource.fetchNewestBooks();
+
+      if (pageNum == 0) {
+        if (cachedBooks.isNotEmpty) {
+          return right(cachedBooks);
+        }
+      }
+
       //* With Mapper
       var response = await apiServices.fetechNewestBooks(pageNum);
       final List<BookEntity> books =
